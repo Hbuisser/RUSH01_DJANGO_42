@@ -1,0 +1,25 @@
+{% block nav %}
+<ul style="background-color: #cdc293">
+	
+	<div>
+		<a href="{% url 'home' %}">"Life Pro Tips"</a>
+	</div>
+	
+	<div>
+		
+		{% if user.is_authenticated %}
+		<a href="{% url 'logout' %}">logout</a>
+		{% else %}
+		<a href="{% url 'register' %}">register</a>
+		<a href="{% url 'login' %}">login</a>
+		{% endif %}
+	</div>
+	<div> 
+		{% if user.is_authenticated %}
+			<p>Hello {{ request.user.username }}!</p>
+		{% else %}
+			<p >Hello {{ usr_name }} !</p>
+		{% endif %}
+	</div>
+</ul>
+{% endblock %}

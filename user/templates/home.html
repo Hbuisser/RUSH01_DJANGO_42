@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+HomePage
+{% endblock %}
+
+{% block content %}
+<h1> Hello  </h1>
+{% if user.is_authenticated %}
+<div>
+    <h2>Your informations</h2>
+    <div>
+        <ul>
+            <li>
+                {{ u_data.name }}
+                {{ u_data.surname }}
+                {{ u_data.email }}
+                {{ u_data.description }}
+                {{ u_data.profil_picture }}
+            </li>
+        </ul>
+    </div>
+<h2> Do you want to modify them?</h2>
+<div>
+    <form method="POST">
+        {% csrf_token %}
+        {{ myform }}
+        <input type='submit' value='Submit'>
+    </form>
+</div>
+{% endif %}
+{% endblock %}
